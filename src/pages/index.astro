@@ -1,9 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+// import Card from '../components/Card.astro';
+import PieChart from '../components/PieChart.astro';
 ---
 
 <Layout title='Data Viz Goal'>
   <h1 class='text-4xl'>Data Viz Goal</h1>
   <p>Data Visualization Course</p>
+  <hr />
+  <PieChart
+    title='Average Activies per Week'
+    headers={['Activity', 'Number of Total Hours']}
+    dataValues={[
+      ['Work', 11],
+      ['Eat', 2],
+      ['Commute', 2],
+      ['Watch TV', 32],
+      ['Sleep', 7],
+    ]}
+  />
 </Layout>

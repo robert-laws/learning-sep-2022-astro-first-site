@@ -1,0 +1,30 @@
+---
+export interface Props {
+  title: string;
+  headers: Array<string>;
+  dataValues: Array<Array<string | number>>;
+}
+
+const { title, headers, dataValues } = Astro.props as Props;
+---
+
+<script defer define:vars={{ title, headers, dataValues }}>
+  google.charts.load('current', { packages: ['corechart'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([headers, ...dataValues]);
+
+    var options = {
+      title,
+    };
+
+    var chart = new google.visualization.PieChart(
+      document.getElementById('piechart')
+    );
+
+    chart.draw(data, options);
+  }
+</script>
+
+<div id='piechart' style='width: 900px; height: 500px;'></div>
